@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/AccountLayout.cshtml";
+}
+
+<div class="text-center">
+    <h2>Agenda de Contatos</h2>
+    <h3>Acesso Ao Sistema</h3>
+    </hr>
+</div>
+
+<form>
+
+    <div class="mb-2">
+        <label>Email de Acesso</label>
+        <input type="text" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Senha de Acesso: </label>
+        <input type="password" class="form-control" />
+        <div class="text-end">
+            <a href="/Account/Password">Esqueci Minha Senha?</a>
+        </div>
+    </div>
+
+    <div class="mb-2">
+        <div class="d-grid">
+            <input type="submit" class="btn btn-success" value="Acessar Agenda" />
+        </div>
+
+    </div>
+
+    <div class="mb-2">
+        <div class="d-grid">
+            <a href="/Account/Register" class="btn btn-primary">Não possui conta? Cadastra-se aqui!</a>
+        </div>
+    </div>
+
+</form>

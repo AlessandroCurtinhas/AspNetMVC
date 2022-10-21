@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/AccountLayout.cshtml";
+}
+
+<h1>Register!</h1>
+<div class="text-center">
+    <h3>Crie sua conta de acesso</h3>
+    <p>Preencha o formulário para realizar o seu cadastro.</p>
+    <hr />
+</div>
+
+<form>
+
+    <div class="mb-2">
+        <label>Nome do usuário:</label>
+        <input type="text" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Email de acesso:</label>
+        <input type="text" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Senha de acesso:</label>
+        <input type="password" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Confirme sua senha:</label>
+        <input type="password" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <div class="d-grid">
+            <input type="submit" class="btn btn-success" value="Realizar Cadastro" />
+        </div>
+    </div>
+
+    <div class="mb-2">
+        <div class="d-grid">
+            <a href="/Account/Login" class="btn btn-primary">
+                Já possui conta? <strong>Acesse aqui!</strong>
+            </a>
+        </div>
+    </div>
+
+</form>
