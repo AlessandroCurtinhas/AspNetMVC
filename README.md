@@ -1,2 +1,2 @@
-## Agenda de Contaos - Projeto de Estudo
+## Agenda de Contatos - Projeto de Estudo
  - Projeto usando ApsNet MVC
