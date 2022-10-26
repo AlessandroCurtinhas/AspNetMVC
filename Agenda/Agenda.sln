@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Presentation", "Agenda.Presentation\Agenda.Presentation.csproj", "{F15513DE-9746-476E-A81B-BEF297F05FAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agenda.Presentation", "Agenda.Presentation\Agenda.Presentation.csproj", "{F15513DE-9746-476E-A81B-BEF297F05FAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Camada de Apresentação", "1 - Camada de Apresentação", "{058469F0-FD0E-4B7E-B0E2-A8B6F0734466}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Camada de Acesso a Dados", "2 - Camada de Acesso a Dados", "{DBAC1503-C2A5-4C18-8E6E-6537A4F60C50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Camada de Envio de Mensagens", "3 - Camada de Envio de Mensagens", "{7F7394AB-C818-439B-9CE0-F177380DFE49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Camada de Relatórios", "4 - Camada de Relatórios", "{86B055B8-7FB9-45FF-A310-A468435F5C4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Data", "Agenda.Data\Agenda.Data.csproj", "{38E2669B-9690-4459-AF15-4255ACDF8D15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,17 @@ Global
 		{F15513DE-9746-476E-A81B-BEF297F05FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F15513DE-9746-476E-A81B-BEF297F05FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F15513DE-9746-476E-A81B-BEF297F05FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E2669B-9690-4459-AF15-4255ACDF8D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E2669B-9690-4459-AF15-4255ACDF8D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E2669B-9690-4459-AF15-4255ACDF8D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E2669B-9690-4459-AF15-4255ACDF8D15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F15513DE-9746-476E-A81B-BEF297F05FAC} = {058469F0-FD0E-4B7E-B0E2-A8B6F0734466}
+		{38E2669B-9690-4459-AF15-4255ACDF8D15} = {DBAC1503-C2A5-4C18-8E6E-6537A4F60C50}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {408BE21F-76E5-4101-8201-11019DF23E29}
