@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Agenda.Presentation.Models.AccountLoginModel
+
+@{
     Layout = "~/Views/Shared/AccountLayout.cshtml";
 }
 
@@ -8,17 +10,23 @@
     </hr>
 </div>
 
-<form>
-
+@using(Html.BeginForm())
+{
     <div class="mb-2">
         <label>Email de Acesso</label>
-        <input type="text" class="form-control" />
+        @Html.TextBoxFor(model => model.Email, new { @class="form-control"})
+        <div class="text-danger">
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
     </div>
 
     <div class="mb-2">
         <label>Senha de Acesso: </label>
-        <input type="password" class="form-control" />
-        <div class="text-end">
+        @Html.PasswordFor(model => model.Senha, new { @class="form-control"})
+        <div class="text-danger">
+            @Html.ValidationMessageFor(model => model.Senha)
+        </div>
+         <div class="text-end">
             <a href="/Account/Password">Esqueci Minha Senha?</a>
         </div>
     </div>
@@ -36,4 +44,11 @@
         </div>
     </div>
 
-</form>
+    <div class="mb-2">
+        <div class="texte-center text-danger">
+            <strong>
+                @TempData["Mensagem"]
+            </strong>
+        </div>
+    </div>
+}

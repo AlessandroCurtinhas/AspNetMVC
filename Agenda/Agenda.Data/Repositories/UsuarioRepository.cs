@@ -52,7 +52,7 @@ namespace Agenda.Data.Repositories
         /// <param name="email"></param>
         /// <param name="senha"></param>
         /// <returns></returns>
-        public Usuario GetByEmailAndSenha(string email, string senha)
+        public Usuario? GetByEmailAndSenha(string email, string senha)
         {
             var query = @"
                 SELECT * FROM Usuario

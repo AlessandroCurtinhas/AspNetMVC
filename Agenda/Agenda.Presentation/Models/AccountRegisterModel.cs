@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Agenda.Presentation.Models.Validators;
+using System.ComponentModel.DataAnnotations;
 
 namespace Agenda.Presentation.Models
 {
@@ -14,9 +15,8 @@ namespace Agenda.Presentation.Models
         [EmailAddress(ErrorMessage = "Por favor, informe um endereço de email válido.")]
         [Required(ErrorMessage = "Por favor, informe o seu email.")]
         public string Email { get; set; }
-        
-        [MinLength(8, ErrorMessage = "Por favor, informe no mínimo {1} caracteres.")]
-        [MaxLength(20, ErrorMessage = "Por favor, informe no máximo {1} caracteres.")]
+
+        [PasswordValidator(ErrorMessage = "Informe de 8 a 20 caracteres com pelo menos 1 letra minúscula, 1 letra maiúscula, 1 número e um caractere especial.")]
         [Required(ErrorMessage = "Por favor, informe a sua senha.")]
         public string Senha { get; set; }
         

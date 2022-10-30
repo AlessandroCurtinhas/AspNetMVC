@@ -11,6 +11,31 @@ namespace Agenda.Presentation.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Login(AccountLoginModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                try
+                {
+                    var usuarioRepository = new UsuarioRepository();
+                    var usuario = usuarioRepository.GetByEmailAndSenha(model.Email, model.Senha);
+
+                    if(usuario == null)
+                    {
+                        ModelState.Clear();
+                        throw new Exception($"Usuario ou senha inválidos.");
+                    }
+
+                    return RedirectToAction("Index", "Home");
+                }
+                catch (Exception e)
+                {
+                    TempData["Mensagem"] = $"Erro: {e.Message}";
+                }
+            }
+            return View();
+        }
         public IActionResult Register()
         {
             return View();
@@ -23,6 +48,15 @@ namespace Agenda.Presentation.Controllers
             {
                 try
                 {
+                    var usuarioRepository = new UsuarioRepository();
+                    var usuarioEmail = usuarioRepository.GetByEmail(model.Email);
+
+                    if (usuarioEmail != null)
+                    {
+                        ModelState.Clear();
+                        throw new Exception($"O Email {usuarioEmail.Email} já está cadastrado para outro usuário");
+                    }
+                        
                     var usuario = new Usuario
                     {
                         IdUsuario = Guid.NewGuid(),
@@ -31,18 +65,18 @@ namespace Agenda.Presentation.Controllers
                         Senha = model.Senha,
                         DataCriacao = DateTime.Now
                     };
-
-                    var usuarioRepository = new UsuarioRepository();
+                 
                     usuarioRepository.Create(usuario);
 
                     TempData["Mensagem"] = $"Parabéns {usuario.Nome}, sua conta foi criada com sucesso!";
+
+                    ModelState.Clear();
                 }
                 catch (Exception e)
                 {
                     TempData["Mensagem"] = $"Erro: {e.Message}";
                 }
-            }
-            
+            }            
             return View();
         }
 
