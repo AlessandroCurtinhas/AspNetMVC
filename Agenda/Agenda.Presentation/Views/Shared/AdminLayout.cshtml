@@ -1,4 +1,11 @@
-﻿
+﻿@using Agenda.Presentation.Models
+@using Newtonsoft.Json
+
+@{
+    var json = User.Identity.Name;
+    var auth = JsonConvert.DeserializeObject<AuthenticationModel>(json);
+}
+
 @{
     Layout = null;
 }
@@ -39,9 +46,38 @@
           </ul>
         </li>
       </ul>
+
+      <form class="d-flex">
+          <div class="text-white">
+              <div>@auth.Nome</div>
+              <div style="margin-top: -10px!important"><small>@auth.Email</small></div>
+          </div>
+          &nbsp;&nbsp;&nbsp;
+          <a href="/Account/Logout" class="btn btn-outline-light" onclick="return confing('Deseja realmente encerrar sua sessão')"> Sair da Agenda </a>
+      </form>
+
     </div>
   </div>
 </nav>
+
+@if(TempData["MensagemSucesso"] != null)
+{
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Sucesso!</strong> @TempData["MensagemSucesso"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }else if(TempData["MensagemAlerta"] != null){
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Alerta!</strong> @TempData["MensagemAlerta"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }else if(TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Erro!</strong> @TempData["MensagemErro"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
 
 <div class="container mt-4">
     @RenderBody()

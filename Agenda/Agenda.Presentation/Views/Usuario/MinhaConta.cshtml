@@ -1,0 +1,63 @@
+﻿@model Agenda.Presentation.Models.UsuarioMinhaContaModel
+
+@using Agenda.Presentation.Models
+@using Newtonsoft.Json
+
+@{
+    var json = User.Identity.Name;
+    var auth = JsonConvert.DeserializeObject<AuthenticationModel>(json);
+}
+
+@{
+    ViewData["Title"] = "MinhaConta";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card mb-2">
+    <div class="card-body">
+        <h4>Dados do Usuário Autenticado: </h4>
+        <div class="mb-2">
+            Id do Usuario: <strong>@auth.IdUsuario</strong>
+        </div>
+        <div class="mb-2">
+            Nome do Usuário: <strong>@auth.Nome</strong>
+        </div>
+        <div class="mb-2">
+            Email de Acesso: <strong>@auth.Email</strong>
+        </div>
+        <div class="mb-2">
+            Data e Hora de Acesso: <strong>@auth.DataHoraAcesso</strong>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h4>Atualize a sua senha de acesso: </h4>
+        @using(Html.BeginForm())
+        {
+            <div class="row mb-2">
+                <div class="col-md-4">
+                    <label>Informe a Nova Senha: </label>
+                    @Html.PasswordFor(model => model.NovaSenha, new { @class = "form-control"})
+                    <div class="text-danger">
+                        <strong>@Html.ValidationMessageFor(model => model.NovaSenha )</strong>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Informe a Nova Senha: </label>
+                    @Html.PasswordFor(model => model.NovaSenhaConfirmacao, new { @class = "form-control"})
+                    <div class="text-danger">
+                        <strong>@Html.ValidationMessageFor(model => model.NovaSenhaConfirmacao )</strong>
+                    </div>
+                </div>
+            </div>    
+
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <input type="submit"class="btn btn-primary" value="Salvar Alterações" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

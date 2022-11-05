@@ -1,7 +1,11 @@
 ﻿using Agenda.Data.Entities;
 using Agenda.Data.Repositories;
 using Agenda.Presentation.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace Agenda.Presentation.Controllers
 {
@@ -26,6 +30,22 @@ namespace Agenda.Presentation.Controllers
                         ModelState.Clear();
                         throw new Exception($"Usuario ou senha inválidos.");
                     }
+
+                    var authenticationModel = new AuthenticationModel
+                    {
+                        IdUsuario = usuario.IdUsuario,
+                        Nome = usuario.Nome,
+                        Email = usuario.Email,
+                        DataHoraAcesso = DateTime.Now
+                    };
+
+                    //gerar conteudo para gravação no cookie de autenticação
+                    var json = JsonConvert.SerializeObject(authenticationModel);
+                    var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, json) }, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    //gravando cookie
+                    var principal = new ClaimsPrincipal(identity);
+                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -83,6 +103,12 @@ namespace Agenda.Presentation.Controllers
         public IActionResult Password()
         {
             return View();
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Account");
         }
     }
 }

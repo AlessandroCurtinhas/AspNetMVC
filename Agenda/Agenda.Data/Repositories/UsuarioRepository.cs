@@ -65,5 +65,21 @@ namespace Agenda.Data.Repositories
             }
         }
 
+        public void UpdateSenha(Guid idUsuario, string novaSenha)
+        {
+            var query = @"
+                    UPDATE Usuario
+                    SET
+                    Senha = CONVERT(VARCHAR(32), HASHBYTES('MD5', @novaSenha),2)
+                    where IdUsuario = @IdUsuario
+                ";
+
+            using(var connection = new SqlConnection(SqlServerConfiguration.GetConnectionString))
+            {
+                connection.Execute(query, new {idUsuario, novaSenha});
+            }
+
+        }
+
     }
 }
