@@ -16,6 +16,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/css/bootstrap.css" type=""text/css" />
+    @RenderSection("styles", required: false)
     <title>Agenda de Contatos</title>
 </head>
 <body>
@@ -82,7 +83,7 @@
 <div class="container mt-4">
     @RenderBody()
 </div>
-
     <script type="text/javascript" src="~/js/bootstrap.bundle.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

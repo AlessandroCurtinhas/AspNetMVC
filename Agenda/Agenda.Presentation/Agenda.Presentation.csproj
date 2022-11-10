@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Agenda.Data\Agenda.Data.csproj" />
+    <ProjectReference Include="..\Agenda.Reports\Agenda.Reports.csproj" />
   </ItemGroup>
 
 </Project>

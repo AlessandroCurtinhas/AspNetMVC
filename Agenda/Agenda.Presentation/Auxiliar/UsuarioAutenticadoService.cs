@@ -1,7 +1,7 @@
 ﻿using Agenda.Presentation.Models;
 using Newtonsoft.Json;
 
-namespace Agenda.Presentation.Service
+namespace Agenda.Presentation.Auxiliar
 {
     public class UsuarioAutenticadoService
     {

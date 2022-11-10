@@ -5,22 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Agenda.Data.Entities
-{   
+{
     /// <summary>
-    /// Classe de modelo de dados para usuario
+    /// Classe de modelo de dados para contato
     /// </summary>
-    public class Usuario
+    public class Contato
     {
         #region Propriedades
-        public Guid IdUsuario { get; set; }
+        public Guid IdContato { get; set; }
         public string Nome { get; set; }
+        public string Telefone { get; set; }
         public string Email { get; set; }
-        public string Senha { get; set; }
-        public DateTime DataCriacao { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public int Tipo { get; set; }
+        public Guid IdUsuario { get; set; }
         #endregion
 
         #region Relacionamentos
-        public IEnumerable<Contato> Contatos { get; set; }
+        public Usuario Usuario { get; set; }
         #endregion
     }
+
 }

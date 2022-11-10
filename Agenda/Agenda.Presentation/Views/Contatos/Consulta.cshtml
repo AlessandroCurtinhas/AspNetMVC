@@ -1,8 +1,71 @@
-﻿
+﻿@model List<Agenda.Presentation.Models.ContatoConsultaModel>
+
 @{
     ViewData["Title"] = "Consulta";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h1>Consulta</h1>
+<div class="card">
+    <div class="card-body">
 
+         <h4>Consulta de Contatos</h4>
+            <p>Listagem de contatos cadastrados em sua agenda.</p>
+        <hr/>
+
+        <table id="consulta" class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th>Nome do Contato</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Data de Nascimento</th>
+                    <th>Tipo</th>
+                    <th>Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nome</td>
+                        <td>@item.Telefone</td>
+                        <td>@item.Email</td>
+                        <td>@item.DataNascimento</td>
+                        <td>@item.Tipo</td>
+                        <td>
+                            <a href="/Contatos/Edicao/@item.IdContato" class="btn btn-sm btn-outline-primary">Editar</a>
+                            <a href="/Contatos/Exclusao/@item.IdContato" onclick="return confirm('Deseja realmente excluir o contato: @item.Nome')" class="btn btn-sm btn-outline-danger">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">
+                        Quantidade de Contatos: @Model.Count
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+@section styles
+{
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" type=""text/css" />
+}
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" type="text/javascript"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+    <script>
+    $(document).ready( function () {
+    $('#consulta').DataTable(
+        {
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/pt-BR.json'
+            }
+        });
+    });
+    </script>
+}

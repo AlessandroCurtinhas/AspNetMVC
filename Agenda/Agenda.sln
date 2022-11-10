@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Camada de Envio de Mens
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Camada de Relatórios", "4 - Camada de Relatórios", "{86B055B8-7FB9-45FF-A310-A468435F5C4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Data", "Agenda.Data\Agenda.Data.csproj", "{38E2669B-9690-4459-AF15-4255ACDF8D15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agenda.Data", "Agenda.Data\Agenda.Data.csproj", "{38E2669B-9690-4459-AF15-4255ACDF8D15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Reports", "Agenda.Reports\Agenda.Reports.csproj", "{42B3C568-9319-4883-B47E-3E591F57BD55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{38E2669B-9690-4459-AF15-4255ACDF8D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38E2669B-9690-4459-AF15-4255ACDF8D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38E2669B-9690-4459-AF15-4255ACDF8D15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42B3C568-9319-4883-B47E-3E591F57BD55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B3C568-9319-4883-B47E-3E591F57BD55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B3C568-9319-4883-B47E-3E591F57BD55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B3C568-9319-4883-B47E-3E591F57BD55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F15513DE-9746-476E-A81B-BEF297F05FAC} = {058469F0-FD0E-4B7E-B0E2-A8B6F0734466}
 		{38E2669B-9690-4459-AF15-4255ACDF8D15} = {DBAC1503-C2A5-4C18-8E6E-6537A4F60C50}
+		{42B3C568-9319-4883-B47E-3E591F57BD55} = {86B055B8-7FB9-45FF-A310-A468435F5C4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {408BE21F-76E5-4101-8201-11019DF23E29}

@@ -1,9 +1,8 @@
 ﻿using Agenda.Data.Repositories;
 using Agenda.Presentation.Models;
-using Agenda.Presentation.Service;
+using Agenda.Presentation.Auxiliar;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace Agenda.Presentation.Controllers
 {

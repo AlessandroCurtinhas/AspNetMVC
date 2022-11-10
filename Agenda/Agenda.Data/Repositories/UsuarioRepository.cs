@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Agenda.Data.Repositories
 {
+    /// <summary>
+    /// Classe de repositório de dados para Usuario
+    /// </summary>
     public class UsuarioRepository
     {
         /// <summary>
@@ -64,7 +67,11 @@ namespace Agenda.Data.Repositories
                 return connection.Query<Usuario>(query, new { email, senha }).FirstOrDefault();
             }
         }
-
+        /// <summary>
+        /// Metodo para atualizar a senha do usuario
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <param name="novaSenha"></param>
         public void UpdateSenha(Guid idUsuario, string novaSenha)
         {
             var query = @"
