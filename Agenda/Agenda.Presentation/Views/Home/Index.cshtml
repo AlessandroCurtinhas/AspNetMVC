@@ -1,6 +1,81 @@
-﻿
+﻿@model List<Agenda.Presentation.Models.DashboardModel>
+
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>Seja Bem vindo a agenda de contatos!</h2>
+<div class="card">
+    <div class="card-body">
+        <h4>Seja Bem Vindo a Agenda de Conatatos</h4>
+        <p>Resumo da Agenda: </p>
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-4">
+                <table class="table table-sm">
+                       <thead>
+                           <tr>
+                               <th>Tipo de Contato</th>
+                               <th>Quantidade</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>@item.TipoContato</td>
+                                <td>@item.Quantidade</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-8">
+                <div id="grafico">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+     <script src="https://code.jquery.com/jquery-3.6.1.min.js" type="text/javascript"></script>
+     <script src="https://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+
+     <script> var dadosGrafico = []; </script>
+
+        @foreach (var item in Model)
+        {
+            <script>
+                dadosGrafico.push(['@item.TipoContato',@item.Quantidade]);
+            </script>
+        }
+
+     <script>
+        new Highcharts.Chart({
+            chart: {
+                type: 'pie',
+                renderTo: 'grafico'
+            },
+            title: {
+                text: 'Quantidade de contatos por tipo'
+            },
+            plotOptions: {
+                pie : {
+                    innerSize: '60%',
+                    dataLabels: {
+                        enable: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [
+                {
+                    data: dadosGrafico
+                }
+            ]
+        });
+    </script>
+}

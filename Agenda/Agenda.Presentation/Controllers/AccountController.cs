@@ -1,6 +1,8 @@
 ﻿using Agenda.Data.Entities;
 using Agenda.Data.Repositories;
+using Agenda.Messages.Services;
 using Agenda.Presentation.Models;
+using Bogus;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -102,6 +104,56 @@ namespace Agenda.Presentation.Controllers
 
         public IActionResult Password()
         {
+           return View();
+        }
+
+        [HttpPost]
+        public IActionResult Password(AccountPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var usuarioRepository = new UsuarioRepository();
+                    var usuario = usuarioRepository.GetByEmail(model.Email);
+
+                    if(usuario == null)
+                    {
+                        throw new Exception("Email inválido");
+                    }
+
+                    #region NovaSenha
+                    var faker = new Faker();
+                    var novaSenha = $"@{faker.Internet.Password()}";
+                    #endregion
+
+                    #region Envio do Email
+                    var emailMessageService = new EmailMessageService();
+                    var subject = "Recuperação de Senha - Agenda de Contatos";
+                    var body = @$"
+                                <h3>Olá {usuario.Nome}</h3>
+                                <p> Uma nova senha gerada com uscesso para o seu usuário. </p>
+                                <p> Acessa sua agenda com a senha: <strong>{novaSenha}</strong></p>
+                                <p> Após acessar a agenda, você poderpa utilizar o menu 'Minha Conta' para alterar sua senha. </p>
+                                <br/>
+                                <p>Att, <br/> Equipe Agenda de Contatos </p>
+                        ";
+
+                    emailMessageService.SendMessage(usuario.Email, subject, body);
+                    usuarioRepository.UpdateSenha(usuario.IdUsuario, novaSenha);
+                    
+                    TempData["Mensagem"] = $"A senha nova foi enviada para seu email.";
+                    ModelState.Clear();
+
+                    return Redirect("Login");
+
+                    #endregion
+                }
+                catch (Exception e)
+                {
+                    TempData["Mensagem"] = $"Erro: {e.Message}";
+                }
+            }
             return View();
         }
 

@@ -1,6 +1,6 @@
 ﻿using Agenda.Data.Repositories;
 using Agenda.Presentation.Models;
-using Agenda.Presentation.Auxiliar;
+using Agenda.Presentation.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
